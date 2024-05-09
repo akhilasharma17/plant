@@ -1,0 +1,27 @@
+<!doctype html>
+    <head>
+        <title>Plants</title>
+        <!---link to stylesheet-->
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+
+    <body>
+        <header>Home page</header>
+        <!--navigation bar(unordered list)-->
+        <nav>
+            <ul>
+                <li><a href="http://127.0.0.1:5000/">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/contact">Contact</a></li>
+                <li><a href="http://127.0.0.1:5000/all_plant">All Plants</a></li>
+                <li><a href="http://127.0.0.1:5000/plant/1">Specific Plant</a></li>
+            </ul>
+        </nav>
+        <!--main(with jinja)-->
+        <main>
+            {%block content%} {%endblock%}
+        </main>
+        <!--footer-->
+        <footer>
+            xyz
+        </footer>
+    </body>

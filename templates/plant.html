@@ -1,0 +1,10 @@
+<!--plant page with jinja-->
+{%extends "layout.html"%}
+{%block content%}
+    <!--this is the first detail about a specific plant, not the first plant-->
+    <h1>{{plant[1]}}</h1>
+    <!--this is the second detal about a specific plant, not the second plant-->
+    <p>{{plant[2]}}</p>
+    <p>{{plant[3]}}</p>
+    <p>{{plant[4]}}</p>
+{%endblock%}
