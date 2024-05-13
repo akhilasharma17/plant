@@ -3,8 +3,10 @@
 {%block content%}
     <!--this is the first detail about a specific plant, not the first plant-->
     <h1>{{plant[1]}}</h1>
-    <!--this is the second detal about a specific plant, not the second plant-->
-    <p>{{plant[2]}}</p>
-    <p>{{plant[3]}}</p>
-    <p>{{plant[4]}}</p>
+    <!--this is the second detail about a specific plant, not the second plant-->
+    <p>Status: {{plant[2]}}</p>
+    <!--this is a sentence which has data in it for each specific plant. the data is coming from the Planting_instructions table-->
+    <p>Planting instructions: Plant in {{planting_instruction[1]}} on a {{planting_instruction[4]}} terrain at a depth of {{planting_instruction[2]}}cm and a distance of {{planting_instruction[3]}}cm from other plants.</p>
+    <p>Family: {{plant[4]}}</p>
+    <p>Scientific name: {{plant[5]}}</p>
 {%endblock%}

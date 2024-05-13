@@ -29,7 +29,10 @@ def plant(id):
     cursor = connect.cursor()
     cursor.execute("SELECT * FROM Plant WHERE id=?", (id,))
     plant = cursor.fetchone()
-    return render_template('plant.html', plant=plant)
+    # planting instruction
+    cursor.execute("SELECT * FROM Planting_instruction WHERE id=?", (id,))
+    instruction = cursor.fetchone()
+    return render_template('plant.html', plant=plant, planting_instruction=instruction)
 
 
 # about/contact information page
