@@ -32,13 +32,23 @@ def plant(id):
     # planting instruction
     cursor.execute("SELECT * FROM Planting_instruction WHERE id=?", (id,))
     instruction = cursor.fetchone()
-    return render_template('plant.html', plant=plant, planting_instruction=instruction)
+    return render_template('plant.html', plant=plant,
+                           planting_instruction=instruction)
 
 
 # about/contact information page
 @app.route('/contact')
 def contactpage():
     return render_template("contact.html")
+
+
+# triangles
+@app.route('/triangle/<int:size>')
+def triangle_pattern(size):
+    triangle = ""
+    for i in range(size):
+        triangle += (i+1)*'*' + "<br>"
+    return (triangle)
 
 
 if __name__ == "__main__":
