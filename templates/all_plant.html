@@ -1,0 +1,10 @@
+<!--all plants page with jinja-->
+{%extends "layout.html"%}
+{%block content%}
+    <p>All plants...</p>
+    {% for plant in plant %}
+    <p>
+      <a href='plant/{{plant[0]}}'>{{ plant[1] }}</a>
+    </p>
+  {% endfor %}
+{%endblock%}
