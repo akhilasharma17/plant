@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Search Results for "{{ search_term }}"</h1>
+    {% if result %}
+        <ul>
+            {% for plant in result %}
+                <li>{{ plant[1] }} ({{ plant[2] }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No plants found matching your search.</p>
+    {% endif %}
+{% endblock %}

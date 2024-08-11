@@ -8,23 +8,29 @@
     <body>
         <header>Home page</header>
         <!--navigation bar(unordered list)-->
-        <nav>
+        <div class="navigation" nav>
             <ul>
                 <li><a href="http://127.0.0.1:5000/">Home</a></li>
                 <li><a href="http://127.0.0.1:5000/contact">Contact</a></li>
                 <li><a href="http://127.0.0.1:5000/all_plant">All Plants</a></li>
                 <li><a href="http://127.0.0.1:5000/plant/1">Specific Plant</a></li>
                 <!--<li><a href="http://127.0.0.1:5000/triangle/1">Triangle</a></li>-->
-                <input type="text" placeholder="Search..">
-            </div>
+                <li><a href="http://127.0.0.1:5000/search">Search bar</a></li>
+                <li><a href="http://127.0.0.1:5000/login">Login</a></li>
             </ul>
+                    <!-- Search form -->
+            <form action="/search" method="GET">
+                <input type="text" name="search_term" placeholder="Search plants...">
+                <input type="submit" value="Search">
+            </form>
         </nav>
+        </div>
         <!--main(with jinja)-->
         <main>
             {%block content%} {%endblock%}
         </main>
         <!--footer-->
         <footer>
-            Footer
+            Contact us here: abcd@gmail.com
         </footer>
     </body>
