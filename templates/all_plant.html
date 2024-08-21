@@ -3,8 +3,12 @@
 {%block content%}
     <p>All plants...</p>
     {% for plant in plant %}
-    <p>
-      <a href='plant/{{plant[0]}}'>{{ plant[1] }}</a>
-    </p>
+    <div class="gallery">
+      <img src="/static/images/{{plant[1]}}.jpg"
+        alt="Image of {{plant[1]}}" width="200px" height="120px">
+        <p><a href='plant/{{plant[0]}}'>{{ plant[1] }}</p>
+      </a>
+      <div class="description">{{plant[2]}}</div>
+    </div>
   {% endfor %}
 {%endblock%}

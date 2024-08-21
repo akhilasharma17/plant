@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-	font-family: "Courier New", "Times New Roman", monospace;
+	font-family: "Comfortaa, "Times New Roman", monospace;
 }
 
 /*style for navigation bar*/
@@ -21,7 +21,7 @@ li:last-child {
 
 li a {
 	display: block;
-	color: rgb(191, 144, 230);
+	color: rgb(83, 24, 24);
 	text-align: center;
 	padding: 15px 18px;
 	text-decoration: none;
@@ -51,13 +51,13 @@ li a:hover {
 /*style for all-plants page(image gallery)*/
 div.gallery {
 	margin: 5px;
-	border: 1px solid rgb(191, 144, 230);
+	border: 1px solid rgb(145, 233, 134);
 	float: left;
 	width: 180px;
 }
 
 div.gallery.hover {
-	border: 1px solid rgb(215, 196, 229)
+	border: 1px solid rgb(146, 223, 153)
 }
 
 div.gallery image {
