@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-	font-family: "Comfortaa, "Times New Roman", monospace;
+	font-family: "Comfortaa", "Calibri", monospace;
 }
 
 /*style for navigation bar*/
@@ -46,6 +46,11 @@ li a:hover {
 .active {
 	background-color: rgb(201, 236, 194);
 }
+
+.search {
+	margin-top: 13px;
+	margin-left: 10px;
+}
 /*end of style for nav bar*/
 
 /*style for all-plants page(image gallery)*/
@@ -68,6 +73,36 @@ div.gallery image {
 div.description {
 	padding: 15px;
 	text-align: center;
+}
+
+/*style for individual plant pages*/
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-template-rows: auto auto auto;
+	/*justify-content: space-evenly;*/
+}
+
+.grid-item1 {
+	grid-row-start: 2;
+}
+
+.grid-item2 {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+.grid_item3 {
+	grid-row-start: 2;
+	grid-row-end: 3;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	/*grid-area: 3/4/2/3*/
+}
+
+/*style for custom 404 page*/
+.error {
+	margin-top: 100px
 }
 
 /*style for footer*/
