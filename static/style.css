@@ -10,6 +10,10 @@ h1 {
 }
 
 /*style for navigation bar*/
+div.nav {
+	z-index: 1;
+}
+
 li {
 	float: left;
 	border-right: 2px solid rgb(61, 212, 56)
@@ -51,29 +55,46 @@ li a:hover {
 	margin-top: 13px;
 	margin-left: 10px;
 }
-/*end of style for nav bar*/
+
 
 /*style for all-plants page(image gallery)*/
-div.gallery {
-	margin: 5px;
+.gallery-container{
+	display: grid;
+	/*code found on https://savvy.co.il/en/blog/wordpress-design/how-the-minmax-function-works/#:~:text=The%20new%20minmax()%20function,and%20the%20other%20at%201fr.(Roee Yossef)*/
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 20px;
+	padding: 20px;
+}
+
+
+.gallery {
 	border: 1px solid rgb(145, 233, 134);
-	float: left;
-	width: 180px;
+	overflow: hidden;
+	text-align: center;
+	background-color: rgb(231, 225, 195);
+	transition: transform 0.2s ease-in-out;
 }
 
-div.gallery.hover {
-	border: 1px solid rgb(146, 223, 153)
+
+.gallery.hover {
+	border: 1px solid rgb(146, 223, 153);
+	transform: scale(1);
+	border-color: rgb(146, 223, 153);
 }
 
-div.gallery image {
+
+.gallery image {
 	width: 100%;
 	height: auto;
+	display: block;
 }
 
-div.description {
+
+.description {
 	padding: 15px;
-	text-align: center;
+	color:rgb(54, 49, 49)
 }
+
 
 /*style for individual plant pages*/
 .grid-container {
@@ -93,11 +114,7 @@ div.description {
 }
 
 .grid_item3 {
-	grid-row-start: 2;
-	grid-row-end: 3;
-	grid-column-start: 2;
-	grid-column-end: 3;
-	/*grid-area: 3/4/2/3*/
+	grid-area: 3/4/2/3;
 }
 
 /*style for custom 404 page*/
