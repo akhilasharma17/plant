@@ -47,21 +47,22 @@ def plant(id):
                                regionlist=regionlist)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET'])
 def search():
-    search_term = request.args.get('search_term', '')
-    status = request.args.get('status', '')
+    search_term = request.args.get('search_term', '').strip()
     conn = sqlite3.connect('plant.db')
     cursor = conn.cursor()
     # get search from Plant table
     result = cursor.execute("SELECT * FROM Plant WHERE name LIKE ?;",
                             (f"%{search_term}%", )).fetchall()
     # status filter
-    status = cursor.execute
+    status_filter = cursor.execute
     ("SELECT * FROM Plant WHERE name LIKE ? AND status = ?")
     conn.close()
-    return render_template("search.html", result=result,
-                           search_term=search_term, status=status)
+    return render_template("search.html",
+                           result=result,
+                           search_term=search_term,
+                           status_filter=status_filter)
 
 
 @app.errorhandler(404)
@@ -86,7 +87,7 @@ def login():
         cursor = conn.cursor()
         user = cursor.execute('SELECT * FROM users WHERE username = ?',
                               (username,)).fetchone()
-        conn.close()  # Ensure the connection is closed
+        conn.close()
 
         if user and user['password'] == password:
             return redirect('/')
@@ -94,6 +95,11 @@ def login():
             message = 'Invalid credentials, please try again.'
 
     return render_template('login.html', message=message)
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    return render_template('signup.html')
 
 
 if __name__ == "__main__":
