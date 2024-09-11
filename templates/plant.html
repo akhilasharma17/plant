@@ -3,21 +3,21 @@
 {%block content%}
     <!--this is the first detail about a specific plant, not the first plant-->
     <div class="grid-container">
-        <h1 class="grid-item1">{{plant[1]}}</h1>
-        <img src="/static/images/{{plant[1]}}.jpg" alt="image of {{plant[1]}}" class="grid-item2">
-        <!--this is the second detail about a specific plant, not the second plant-->
-        <p>Status: {{plant[2]}}</p>
-        <!--this is a sentence which has data in it for each specific plant.
-            the data is coming from the Planting_instructions table-->
+        <h1 class="grid-item1">{{ plant[1] }}</h1>
+        <img src="/static/images/{{ plant[1] }}.jpg" alt="image of {{ plant[1] }}" class="grid-item2">
         <div class="grid-item3">
+            <!--this is the second detail about a specific plant, not the second plant-->
+            <p>Status: {{plant[2]}}</p>
+            <!--this is a sentence which has data in it for each specific plant.
+            the data is coming from the Planting_instructions table-->
             <p>Planting instructions: Plant in  
-                {{planting_instruction[1]}} on a 
-                {{planting_instruction[2]}} terrain at a depth which is 
-                {{planting_instruction[3]}} and at a distance of 
-                {{planting_instruction[4]}}m from other plants.</p>
-            <p>Family: {{plant[3]}}</p>
-            <p>Scientific name: {{plant[4]}}</p>
-            <p>Plant region: {{regionlist[0]}}</p>
+                {{ planting_instruction[1] }} on a 
+                {{ planting_instruction[2] }} terrain at a depth which is 
+                {{ planting_instruction[3] }} and at a distance of 
+                {{ planting_instruction[4] }}m from other plants.</p>
+            <p>Family: {{ plant[3] }}</p>
+            <p>Scientific name: {{ plant[4] }}</p>
+            <p>Plant region: {{ regionlist[0] }}</p>
         </div>
     </div>
 {%endblock%}
