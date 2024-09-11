@@ -11,14 +11,23 @@ def homepage():
 
 
 # all plants page
-@app.route('/all_plant')
+@app.route('/all_plant', methods=['GET'])
 def all_plant():
+    status_filter = request.args.get('status', '').strip()
     conn = sqlite3.connect('plant.db')
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Plant ORDER BY id;")
+    query = "SELECT * FROM Plant"
+    parameters = []
+    # add the status selected to the query
+    if status_filter:
+        query += " WHERE status = ?"
+        parameters.append(status_filter)
+    cursor.execute(query, parameters)
     plants = cursor.fetchall()
     conn.close()
-    return render_template('all_plant.html', plant=plants)
+    return render_template('all_plant.html',
+                           plant=plants,
+                           status_filter=status_filter)
 
 
 # individual plants page
@@ -55,14 +64,10 @@ def search():
     # get search from Plant table
     result = cursor.execute("SELECT * FROM Plant WHERE name LIKE ?;",
                             (f"%{search_term}%", )).fetchall()
-    # status filter
-    status_filter = cursor.execute
-    ("SELECT * FROM Plant WHERE name LIKE ? AND status = ?")
     conn.close()
     return render_template("search.html",
                            result=result,
-                           search_term=search_term,
-                           status_filter=status_filter)
+                           search_term=search_term)
 
 
 @app.errorhandler(404)

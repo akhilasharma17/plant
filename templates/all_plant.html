@@ -1,15 +1,35 @@
 <!--all plants page with jinja-->
 {%extends "layout.html"%}
 {%block content%}
-  <p>All plants...</p>
+  <h1>All plants</h1>
+
+  <!--status filter-->
+  <form method="GET" action="/all_plant">
+    <label for="status">Filter by status:</label>
+    <select name="status">
+      <option value="">All</option>
+      <option value="Not-Threatened" {% if status_filter == 'Not-Threatened' %}selected{% endif %}>Not-Threatened</option>
+      <option value="Threatened" {% if status_filter == 'Threatened' %}selected{% endif %}>Threatened</option>
+      <option value="Endangered" {% if status_filter == 'Endangered' %}selected{% endif %}>Endangered</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+
+    <!--image gallery-->
   <div class="gallery-container">
-    {% for plant in plant %}
-      <div class="gallery">
-        <img src="/static/images/{{ plant[1] }}.jpg"
-          alt="Image of {{ plant[1] }}" width="200px" height="120px">
-          <p><a href='plant/{{ plant[0] }}'>{{ plant[1] }}</a></p>
-        <div class="description">{{ plant[2] }}</div>
+    {% if plant %}
+      {% for plant in plant %}
+        <div class="gallery">
+          <img src="/static/images/{{ plant[1] }}.jpg"
+            alt="Image of {{ plant[1] }}" width="200px" height="120px">
+            <p><a href='plant/{{ plant[0] }}'>{{ plant[1] }}</a></p>
+          <div class="description">{{ plant[2] }}</div>
+        </div>
+      {% endfor %}
       </div>
-    {% endfor %}
+    {% else %}
+      <p>No plants found with the selected filter</p>
+    {% endif %}
   </div>
-{%endblock%}
+{% endblock %}
+

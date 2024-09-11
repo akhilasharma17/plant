@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <!--navigation bar(edit)-->
+        <!--navigation bar-->
         <div class="nav">
             <ul>
                 <li><a href="http://127.0.0.1:5000/">Home</a></li>
@@ -16,16 +16,10 @@
                     <form action="/search" method="GET">
                         <input type="text" name="search_term" placeholder="Search plants..." class="search">
                         <input type="submit" value="Search">
-                            <select name="status" placeholder="Filter by Status...">
-                                <option value=" "></option>
-                                <option value="Threatened">Threatened</option>
-                                <option value="Endangered">Endangered</option>
-                                <option value="Not threatened">Not threatened</option>
-                                <!-- Add more statuses as needed -->
-                            </select>
                     </form>
                 </li>
                 <li><a href="http://127.0.0.1:5000/login">Login here</a></li>
+                <li><a href="http://127.0.0.1:5000/signup">Sign Up here</a></li>
             </ul>
         </div>
         <!--main(with jinja)-->
@@ -37,3 +31,4 @@
             Contact us here: abcd@gmail.com
         </footer>
     </body>
+
