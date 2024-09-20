@@ -1,6 +1,6 @@
 from flask import Flask, render_template, abort, request, redirect, flash
 import sqlite3
-# from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
@@ -90,9 +90,22 @@ def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        query = 'INSERT INTO User (username, password) VALUES (?, ?)'
-        db_query(query, single=False, params=(username, password))
-        flash('Your account has been created. Please log in.')
+        conn = sqlite3.connect('plant.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM User where username = ?", (username,))
+        existing_user = cursor.fetchone()
+        if existing_user:
+            conn.close()
+            flash('Username already exists. Please choose another one.',
+                  "error")
+            return redirect('/signup')
+        hashed_password = generate_password_hash(password)
+        cursor.execute("INSERT INTO User (username, password) VALUES (?, ?)",
+                       (username, hashed_password))
+        conn.commit()
+        conn.close()
+        flash("Your account has been created. Please log in.",
+              "success")
         return redirect('/login')
     return render_template('signup.html')
 

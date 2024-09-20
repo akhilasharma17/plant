@@ -244,6 +244,10 @@ li a:hover {
     background-color: rgb(51, 153, 31);
 }
 
+/*style for sign up*/
+.alert{
+	color: red;
+}
 
 /*style for footer*/
 .footer {
