@@ -249,6 +249,16 @@ li a:hover {
 	color: red;
 }
 
+.success {
+	color: green;
+	padding: 10px;
+}
+
+.error {
+	color: red;
+	padding: 10px;
+}
+
 /*style for footer*/
 .footer {
 	position: fixed;

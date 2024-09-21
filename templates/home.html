@@ -2,10 +2,16 @@
 {%extends "layout.html"%}
 {%block content%}
 <div class="home-page">
-    <h1>Welcome to Plant Preservation!!</h1>
-    <p>Explore a wide variety of plants native to New Zealand. 
-        Learn about their status, habitat, and how to grow them. 
-        Let's make the world greener together!</p>
-    <a href="/all_plant">Click here to see All Plants</a>
-    <a href="/login">Or Login to update plants!</a>
+    <h1>Welcome to Plant Preservation!</h1>
+    {% if username %}
+        <p>Welcome, {{ username }}!</p>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <p><a href="/login">Please Login to like plants</a></p>
+    {% endif %}
+        <p>Explore a wide variety of plants native to New Zealand. 
+            Learn about their status, habitat, and how to grow them. 
+            Let's make the world greener together!</p>
+        <a href="/all_plant">Click here to see All Plants</a>
+</div>
 {%endblock%}

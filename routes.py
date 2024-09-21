@@ -1,6 +1,7 @@
-from flask import Flask, render_template, abort, request, redirect, flash
-import sqlite3
+from flask import Flask, render_template, abort
+from flask import request, redirect, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
+import sqlite3
 
 
 app = Flask(__name__)
@@ -10,7 +11,8 @@ app.secret_key = 'your_secret_key'
 # homepage
 @app.route('/')
 def homepage():
-    return render_template("home.html")
+    username = session.get('username')
+    return render_template("home.html", username=username)
 
 
 def db_query(query, single=False, params=()):
@@ -118,11 +120,20 @@ def login():
         password = request.form['password']
         query = 'SELECT * FROM User WHERE username = ?'
         user = db_query(query, single=True, params=(username,))
-        if user and user[2] == password:
+        if user and check_password_hash(user[2], password):
+            session['username'] = username
+            flash("Login successful.", "success")
             return redirect('/')
         else:
-            message = 'Invalid credentials, please try again.'
+            message = 'Invalid credentials. Please try again.'
     return render_template('login.html', message=message)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    flash("You have been logged out.", "success")
+    return redirect('/')
 
 
 if __name__ == "__main__":
