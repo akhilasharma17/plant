@@ -4,7 +4,7 @@
     <!--this is the first detail about a specific plant, not the first plant-->
     <div class="grid-container">
         <h1 class="grid-item1">{{ plant[1] }}</h1>
-        <img src="/static/images/{{ plant[1] }}.jpg" alt="image of {{ plant[1] }}" class="grid-item2">
+        <img src="{{ plant[5] }}" alt="image of {{ plant[1] }}" class="grid-item2">
         <div class="grid-item3">
             <!--this is the second detail about a specific plant, not the second plant-->
             <p>Status: {{plant[2]}}</p>
@@ -17,7 +17,7 @@
                 {{ planting_instruction[4] }}m from other plants.</p>
             <p>Family: {{ plant[3] }}</p>
             <p>Scientific name: {{ plant[4] }}</p>
-            <p>Plant region: {{ plantregion[0] }}</p>
+            <p>Plant region: {{ plant_region[1] }}</p>
         </div>
     </div>
 {%endblock%}

@@ -50,8 +50,6 @@ def plant(id):
     instruction = db_query(instruction_query, single=True, params=(id,))
     plant_region_query = "SELECT * FROM PlantRegion WHERE regionid=?;"
     plant_region = db_query(plant_region_query, single=True, params=(id,))
-    region_list_query = "SELECT * FROM Regionlist WHERE id=?;"
-    region_list = db_query(region_list_query, single=False, params=(id,))
     plant_query = "SELECT * FROM Plant WHERE id=?;"
     plant = db_query(plant_query, single=True, params=(id,))
     if not plant:
@@ -61,8 +59,7 @@ def plant(id):
         return render_template('plant.html',
                                planting_instruction=instruction,
                                plant=plant,
-                               plantregion=plant_region,
-                               regionlist=region_list)
+                               plant_region=plant_region)
 
 
 @app.route('/search', methods=['GET'])
@@ -70,7 +67,8 @@ def search():
     search_term = request.args.get('search_term', '').strip()
     # get search from Plant table BECAUSE
     query = "SELECT * FROM Plant WHERE name LIKE ?;"
-    result = db_query(query, single=False, params=(f"%{search_term}%",))
+    result = db_query(query, single=False,
+                      params=(f"%{search_term}%",))
     return render_template("search.html",
                            result=result,
                            search_term=search_term)
