@@ -18,8 +18,15 @@
                         <input type="submit" value="Search">
                     </form>
                 </li>
-                <li><a href="http://127.0.0.1:5000/login">Login here</a></li>
-                <li><a href="http://127.0.0.1:5000/signup">Sign Up here</a></li>
+                {% if session['username'] %}
+                    <li class="logout">
+                        <p class="username">{{ session['username']}}</p>
+                        <a href="/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li><a href="http://127.0.0.1:5000/login">Login here</a></li>
+                    <li><a href="http://127.0.0.1:5000/signup">Sign Up here</a></li>
+                {% endif %}
             </ul>
         </div>
         <!--main(with jinja)-->
