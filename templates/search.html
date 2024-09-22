@@ -3,9 +3,9 @@
 {% block content %}
     <h1>Search Results for "{{ search_term }}"</h1>
     {% if result %}
-        <ul>
+        <ul class="gallery-container">
             {% for plant in result %}
-                <li><a href='plant/{{plant[0]}}'>{{ plant[1] }}</a></li>
+                <li class="gallery"><a href='plant/{{plant[0]}}'>{{ plant[1] }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
