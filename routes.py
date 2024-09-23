@@ -8,17 +8,32 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 
-# homepage
+# homepage and watchlist
 @app.route('/')
 def homepage():
+    # get the username from the session so that we can get the watched plants
     username = session.get('username')
-    return render_template("home.html", username=username)
+    if username:
+        params = []
+        query = """
+            SELECT plant.* FROM Plant
+            JOIN Watchlist ON Plant.id = Watchlist.plant_id
+            JOIN User ON User.id = Watchlist.user_id
+            WHERE User.username = ?;
+        """
+        params.append(username)
+        plant = db_query(query, False, params)
+    else:
+        plant = []
+    return render_template("home.html", plant=plant, username=username)
 
 
+# function with connection to database to avoid redundant code
 def db_query(query, single=False, params=()):
     conn = sqlite3.connect('plant.db')
     cursor = conn.cursor()
     cursor.execute(query, params)
+    # if single=True, fetch only one result, or else fetch all
     if single:
         result = cursor.fetchone()
     else:
@@ -33,7 +48,7 @@ def all_plant():
     status_filter = request.args.get('status', '').strip()
     query = "SELECT * FROM Plant"
     params = []
-    # add the status selected to the query
+    # add the status selected to the query to filter
     if status_filter:
         query += " WHERE status = ?"
         params.append(status_filter)
@@ -52,9 +67,9 @@ def plant(id):
     plant_region = db_query(plant_region_query, single=True, params=(id,))
     plant_query = "SELECT * FROM Plant WHERE id=?;"
     plant = db_query(plant_query, single=True, params=(id,))
+    # check if the id is incorrect so that we can show the 404
     if not plant:
         abort(404)
-    # else return plant page
     else:
         return render_template('plant.html',
                                planting_instruction=instruction,
@@ -94,11 +109,13 @@ def signup():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM User where username = ?", (username,))
         existing_user = cursor.fetchone()
+        # check if the user already exists so we don't get repeat usernames
         if existing_user:
             conn.close()
             flash('Username already exists. Please choose another one.',
                   "error")
             return redirect('/signup')
+        # hash the password for extra security
         hashed_password = generate_password_hash(password)
         cursor.execute("INSERT INTO User (username, password) VALUES (?, ?)",
                        (username, hashed_password))

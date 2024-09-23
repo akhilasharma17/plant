@@ -19,14 +19,14 @@
   <div class="gallery-container">
     {% if plant %}
       {% for plant in plant %}
-        <div class="gallery">
-          <img src="{{ plant[5] }}"
-            alt="Image of {{ plant[1] }}" width="200px" height="120px">
-            <p><a href='plant/{{ plant[0] }}'>{{ plant[1] }}</a></p>
-          <div class="description">{{ plant[2] }}</div>
-        </div>
+        <a href='plant/{{ plant[0] }}' class="gallery-link">
+          <div class="gallery-item">
+            <img src="{{ plant[5] }}" alt="Image of {{ plant[1] }}" width="200px" height="120px">
+            <p>{{ plant[1] }}</p>
+            <p class="description">{{ plant[2] }}</p>
+          </div>
+        </a>
       {% endfor %}
-      </div>
     {% else %}
       <p>No plants found with the selected filter</p>
     {% endif %}

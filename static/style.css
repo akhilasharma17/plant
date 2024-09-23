@@ -5,6 +5,7 @@ body {
 	color: rgb(0, 0, 0);
 	margin: 0;
 	padding-top: 40px;
+	height: 100%;
 }
 
 h1 {
@@ -28,7 +29,7 @@ h1 {
 	font-family: 'Comfortaa', sans-serif;
 }
 
-ul {
+.nav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -38,17 +39,17 @@ ul {
 	align-items: center;
 }
 
-li {
+.nav li {
 	border-right: 2px solid rgb(124, 182, 122);
 	padding: 10 px;
 	flex-grow: 1;
 }
 
-li:last-child {
+.nav li:last-child {
 	border-right: none;
 }
 
-li a {
+.nav li a {
 	display: block;
 	color: rgb(83, 24, 24);
 	text-align: center;
@@ -57,7 +58,7 @@ li a {
 	font-weight: bold;
 }
 
-li a:hover {
+.nav li a:hover {
 	background-color: rgb(51, 153, 31);
 }
 
@@ -131,37 +132,48 @@ li a:hover {
 
 /*style for all-plants page(image gallery)*/
 .gallery-container{
-	display: grid;
-	/*code found on https://savvy.co.il/en/blog/wordpress-design/how-the-minmax-function-works/#:~:text=The%20new%20minmax()%20function,and%20the%20other%20at%201fr.(Roee Yossef)*/
-	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-	gap: 20px;
-	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+	justify-content: center;
+	padding-bottom: 40px;
 }
 
-.gallery {
+
+.gallery-link {
+	text-decoration: none;
+}
+
+
+.gallery-item {
 	border: 1px solid rgb(145, 233, 134);
 	border-radius: 8px;
 	overflow: hidden;
 	text-align: center;
 	background-color: rgb(231, 225, 195);
-	transition: transform 0.2s ease-in-out;
+	padding: 10px;
+	transition: transform 0.2s;
 }
 
-.gallery.hover {
-	border: 1px solid rgb(146, 223, 153);
+.gallery-item:hover {
+	border: 1px solid rgb(20, 150, 30);
 	transform: scale(1);
-	border-color: rgb(146, 223, 153);
+	background-color: rgb(196, 184, 127);
 }
 
-.gallery image {
+.gallery-item image {
 	width: 100%;
 	height: auto;
-	display: block;
 }
 
 .description {
 	padding: 15px;
 	color:rgb(54, 49, 49);
+}
+
+.result-link {
+	padding: 40px;
+	text-decoration: none;
 }
 
 
@@ -172,6 +184,7 @@ li a:hover {
 	grid-template-rows: auto auto auto;
 	gap: 20px;
     padding: 40px;
+	padding-bottom: 40px;
     background-color: rgb(145, 233, 134);
     border-radius: 10px;
     box-shadow: 0px 4px 8px;
@@ -181,7 +194,8 @@ li a:hover {
 }
 
 .grid-item1 {
-	grid-column: 1 / 3;
+	grid-column: 1 / 2;
+	width: 100%;
 	text-align: center;
 	font-weight: bold;
 	font-family: 'Comfortaa';
@@ -192,6 +206,11 @@ li a:hover {
 	width: 100%;
 	border: 2px solid rgb(145, 233, 134);
 	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
 }
 
 .grid_item3 {
@@ -216,6 +235,7 @@ li a:hover {
     align-items: center;
     color: rgb(83, 24, 24);
     font-family: "Comfortaa", sans-serif;
+	height: 85vh;
 }
 
 .error-page h1 {
@@ -264,16 +284,19 @@ li a:hover {
 .form-container {
 	display: flex;
 	justify-content: center;
-	max-height: 450px;
 	background-color:aliceblue;
+	height: 100vh;
+	padding-bottom: 40px;
 }
 
 .form-box {
+	margin-top: 100px;
 	border-radius: 10px;
 	box-shadow: 0px 4px 8px;
 	padding: 40px;
 	width: 300px;
 	text-align: center;
+	max-height: 200px;
 }
 
 .form-box h2 {
@@ -287,9 +310,34 @@ li a:hover {
 	font-weight: bold;
 }
 
+/*style for watchlist*/
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px;
+    width: 200px;
+}
+
 
 /*style for footer*/
 .footer {
 	position: fixed;
 	bottom: 0;
+	left: 0;
+	background-color: rgb(93, 153, 81);
+	width: 100%;
+	padding: 1px;
+}
+
+.footer-content {
+    padding: 0 2px;
+	text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
 }

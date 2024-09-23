@@ -1,17 +1,29 @@
-<!--home page with jinja-->
-{%extends "layout.html"%}
-{%block content%}
+{% extends "layout.html" %}
+{% block content %}
 <div class="home-page">
-    <h1>Welcome to Plant Preservation!</h1>
     {% if username %}
-        <p>Welcome, {{ username }}!</p>
+        <h1>Welcome, {{ username }}!</h1>
         <a href="/logout">Logout</a>
+        <h2>Your Watchlist:</h2>
+        <div class="card-container">
+            {% if plant %}
+                {% for watched in plant %}
+                <div class="card">
+                    <h3>{{ watched[1] }}</h3>
+                    <p>{{ watched[2] }} {{ watched[3] }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Your watchlist is empty.</p>
+            {% endif %}
+        </div>
     {% else %}
-        <p><a href="/login">Please Login to like plants</a></p>
-    {% endif %}
-        <p>Explore a wide variety of plants native to New Zealand. 
-            Learn about their status, habitat, and how to grow them. 
-            Let's make the world greener together!</p>
+    <h1>Welcome to Plant Preservation!</h1>
+    <p>Explore a wide variety of plants native to New Zealand. 
+        Learn about their status, habitat, and how to grow them. 
+        Let's make the world greener together!</p>
         <a href="/all_plant">Click here to see All Plants</a>
+        <a href="/login">Login to watchlist</a>
+    {% endif %}
 </div>
-{%endblock%}
+{% endblock %}

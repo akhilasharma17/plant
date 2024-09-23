@@ -5,7 +5,7 @@
     {% if result %}
         <ul class="gallery-container">
             {% for plant in result %}
-                <li class="gallery"><a href='plant/{{plant[0]}}'>{{ plant[1] }}</a></li>
+                <li class="gallery-item"><a href='plant/{{plant[0]}}' class="result-link">{{ plant[1] }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
