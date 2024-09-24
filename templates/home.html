@@ -9,8 +9,13 @@
             {% if plant %}
                 {% for watched in plant %}
                 <div class="card">
+                    <a href="/plant/{{ watched[0]}}">
                     <h3>{{ watched[1] }}</h3>
-                    <p>{{ watched[2] }} {{ watched[3] }}</p>
+                    <p>{{ watched[2] }}</p>
+                    </a>
+                    <form action="/remove_watchlist/{{ watched[0] }}" method="POST">
+                        <button type="submit">Remove from Watchlist</button>
+                    </form>
                 </div>
                 {% endfor %}
             {% else %}
@@ -22,8 +27,8 @@
     <p>Explore a wide variety of plants native to New Zealand. 
         Learn about their status, habitat, and how to grow them. 
         Let's make the world greener together!</p>
-        <a href="/all_plant">Click here to see All Plants</a>
-        <a href="/login">Login to watchlist</a>
+        <p><a href="/all_plant">Click here to see All Plants</a>
+            <a href="/login">Login to watchlist</a></p>
     {% endif %}
 </div>
 {% endblock %}
