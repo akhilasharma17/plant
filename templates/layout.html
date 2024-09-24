@@ -3,18 +3,24 @@
         <title>Plants</title>
         <!---link to stylesheet-->
         <link rel="stylesheet" href="/static/style.css">
-    </head>
+        <!-- favicon -->
+        <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 
+    </head>
     <body>
         <!--navigation bar-->
         <div class="nav">
-            <ul>
-                <li><a href="http://127.0.0.1:5000/">Plant Preservation</a></li>
+            <ul>              
+                <li><a href="http://127.0.0.1:5000/">
+                    <img src="/static/favicon.svg" alt="Home" style="width: 16px; height: 16px;">
+                    Plant Preservation
+                    </a>
+                </li>
                 <li><a href="http://127.0.0.1:5000/all_plant">All Plants</a></li>
                     <!-- Search form -->
                 <li>
                     <form action="/search" method="GET" class="search">
-                        <input type="text" name="search_term" placeholder="Search plants..." maxlength="25">
+                        <input type="text" name="search_term" placeholder="Search plants..." maxlength="30">
                         <input type="submit" value="Search">
                     </form>
                 </li>
