@@ -1,18 +1,18 @@
 <!--all plants page with jinja-->
 {%extends "layout.html"%}
 {%block content%}
-  <h1>All plants</h1>
+  <h1 class="page-title">All plants</h1>
 
   <!--status filter-->
-  <form method="GET" action="/all_plant">
+  <form method="GET" action="/all_plant" class="filter">
     <label for="status">Filter by status:</label>
-    <select name="status">
+    <select name="status" class="filter-options">
       <option value="">All</option>
       <option value="Not-Threatened" {% if status_filter == 'Not-Threatened' %}selected{% endif %}>Not-Threatened</option>
       <option value="Threatened" {% if status_filter == 'Threatened' %}selected{% endif %}>Threatened</option>
       <option value="At-Risk" {% if status_filter == 'At-Risk' %}selected{% endif %}>At-Risk</option>
     </select>
-    <button type="submit">Filter</button>
+    <button type="submit" class="button">Filter</button>
   </form>
 
     <!--image gallery-->
@@ -21,7 +21,7 @@
       {% for plant in plant %}
         <a href='plant/{{ plant[0] }}' class="gallery-link">
           <div class="gallery-item">
-            <img src="{{ plant[5] }}" alt="Image of {{ plant[1] }}" width="200px" height="120px">
+            <img src="{{ plant[5] }}" alt="Image of {{ plant[1] }}">
             <p>{{ plant[1] }}</p>
             <p class="description">{{ plant[2] }}</p>
           </div>

@@ -1,6 +1,12 @@
 <!doctype html>
+<html lang="en"></html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Plants</title>
+        <!--import fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <!---link to stylesheet-->
         <link rel="stylesheet" href="/static/style.css">
         <!-- favicon -->
@@ -10,25 +16,24 @@
     <body>
         <!--navigation bar-->
         <div class="nav">
-            <ul>              
+            <ul>
+                <!--favicon in navigation bar(on Home button)-->
                 <li><a href="http://127.0.0.1:5000/">
-                    <img src="/static/favicon.svg" alt="Home" style="width: 16px; height: 16px;">
+                    <img src="/static/favicon.svg" style="width: 16px; height: 16px;">
                     Plant Preservation
                     </a>
                 </li>
                 <li><a href="http://127.0.0.1:5000/all_plant">All Plants</a></li>
-                    <!-- Search form -->
                 <li>
+                    <!-- search form -->
                     <form action="/search" method="GET" class="search">
                         <input type="text" name="search_term" placeholder="Search plants..." maxlength="30">
                         <input type="submit" value="Search">
                     </form>
                 </li>
                 {% if session['username'] %}
-                    <li class="logout">
-                        <p class="username">{{ session['username']}}</p>
-                        <a href="/logout">Logout</a>
-                    </li>
+                    <li class="nav-username">{{ session['username'] }}</li>
+                    <li class="logout"><a href="/logout">Logout</a></li>
                 {% else %}
                     <li><a href="http://127.0.0.1:5000/login">Login here</a></li>
                     <li><a href="http://127.0.0.1:5000/signup">Sign Up here</a></li>
@@ -42,7 +47,7 @@
         <!--footer-->
         <footer class="footer">
                 <div class="footer-content">
-                    <p>Contact us at: <a href="21434@burnside.school.nz">21434@burnside.school.nz</a></p>
+                    <p>Contact us at: 21434@burnside.school.nz</a></p>
                 </div>
         </footer>
     </body>

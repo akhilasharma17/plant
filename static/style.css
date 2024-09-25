@@ -1,17 +1,38 @@
 /*style sheet for website*/
 /*main body style*/
 body {
-	font-family: "Calibri", "Courier New", monospace;
+	font-family: "Roboto", monospace;
 	color: rgb(0, 0, 0);
 	margin: 0;
 	padding-top: 40px;
 	height: 100%;
 }
 
-h1 {
-	font-family: "Comfortaa", "Calibri", monospace;
+h1, h2 {
+	font-family: "Comfortaa", monospace;
+	text-align: center;
+	}
+
+.page-title {
+	padding: 30px;
 }
 
+.button {
+    background-color: rgb(104, 170, 91); 
+    color: rgb(83, 24, 24); 
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: rgb(81, 133, 71);}
 
 /*style for navigation bar*/
 .nav {
@@ -139,11 +160,9 @@ h1 {
 	padding-bottom: 40px;
 }
 
-
 .gallery-link {
 	text-decoration: none;
 }
-
 
 .gallery-item {
 	border: 1px solid rgb(145, 233, 134);
@@ -152,18 +171,19 @@ h1 {
 	text-align: center;
 	background-color: rgb(231, 225, 195);
 	padding: 10px;
-	transition: transform 0.2s;
+	width: 220px;
 }
 
 .gallery-item:hover {
 	border: 1px solid rgb(20, 150, 30);
-	transform: scale(1);
 	background-color: rgb(196, 184, 127);
 }
 
-.gallery-item image {
+.gallery-container img {
 	width: 100%;
-	height: auto;
+	height: 220px;
+	object-fit: cover;
+	border-radius: 8px;
 }
 
 .description {
@@ -174,6 +194,28 @@ h1 {
 .result-link {
 	padding: 40px;
 	text-decoration: none;
+}
+
+/*style for the status filter form*/
+.filter {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px;
+}
+
+.filter label {
+    margin-bottom: 8px;
+}
+
+/*style for the dropdown*/
+.filter-options {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 12px;
 }
 
 
@@ -198,7 +240,7 @@ h1 {
 	width: 100%;
 	text-align: center;
 	font-weight: bold;
-	font-family: 'Comfortaa';
+	font-family: 'Comfortaa', sans-serif;
 }
 
 .grid-item2 {
@@ -216,7 +258,7 @@ h1 {
 .grid_item3 {
 	display: flex;
 	flex-direction: column;
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Comfortaa', sans-serif;
     padding: 20px;
 }
 
@@ -265,10 +307,6 @@ h1 {
 }
 
 /*style for flash messages*/
-.alert{
-	color: red;
-}
-
 .success {
 	color: green;
 	padding: 10px;
@@ -310,18 +348,30 @@ h1 {
 	font-weight: bold;
 }
 
+/*style for logged in username*/
+.nav-username {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    margin-left: 10px;
+    display: inline-block;
+	text-align: center;
+}
+
 /*style for watchlist*/
 .card-container {
     display: flex;
     flex-wrap: wrap;
 }
+
 .card {
-    border: 1px solid #ccc;
+    border: 5px solid rgb(104, 170, 91);
+	border-radius: 4px;
     padding: 16px;
     margin: 8px;
     width: 200px;
 }
-
 
 /*style for footer*/
 .footer {
@@ -336,8 +386,6 @@ h1 {
 .footer-content {
     padding: 0 2px;
 	text-align: center;
-}
-
-.footer a {
-    text-decoration: none;
+	color: rgb(83, 24, 24);
+	font-weight: bold;
 }

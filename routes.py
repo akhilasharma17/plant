@@ -2,10 +2,11 @@ from flask import Flask, render_template, abort
 from flask import request, redirect, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
+import secrets
 
 
 app = Flask(__name__)
-app.secret_key = 'k'
+app.config['SECRET_KEY'] = secrets.token_hex(24)
 
 
 # homepage and watchlist
@@ -121,8 +122,13 @@ def all_plant():
 def plant(id):
     instruction_query = "SELECT * FROM Planting_instruction WHERE id=?;"
     instruction = db_query(instruction_query, single=True, params=(id,))
-    plant_region_query = "SELECT * FROM PlantRegion WHERE regionid=?;"
-    plant_region = db_query(plant_region_query, single=True, params=(id,))
+    # query for plant region using JOIN to get region names
+    plant_region_query = """
+                        SELECT Region.name FROM Region
+                        JOIN PlantRegion ON Region.id = PlantRegion.region_id
+                        WHERE PlantRegion.plant_id = ?;
+                        """
+    plant_region = db_query(plant_region_query, single=False, params=(id,))
     plant_query = "SELECT * FROM Plant WHERE id=?;"
     plant = db_query(plant_query, single=True, params=(id,))
     username = session.get('username')

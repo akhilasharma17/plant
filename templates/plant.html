@@ -17,14 +17,21 @@
                 {{ planting_instruction[4] }}m from other plants.</p>
             <p>Family: {{ plant[3] }}</p>
             <p>Scientific name: {{ plant[4] }}</p>
-            <p>Plant region: {{ plant_region[1] }}</p>
+            <p>Plant regions: 
+                {% for region in plant_region %}
+                    {{ region[0] }}
+                    {% if not loop.last %}, 
+                    {% endif %}
+                {% endfor %}
+            </p>
+            
         </div>
         {% if username %}
             <form action="/add_to_watchlist/{{ plant[0] }}" method="POST">
                 <button type="submit">Add to Watchlist</button>
             </form>
         {% else %}
-            <p><a href="/login">Log in</a> to add this plant to your watchlist.</p>
+            <p class="grid-item3"><a href="/login">Log in</a> to add this plant to your watchlist.</p>
         {% endif %}
     </div>
 {%endblock%}
