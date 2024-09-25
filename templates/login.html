@@ -20,5 +20,7 @@
         <p>Don't have an account? <a href="/signup">Sign up</a></p>
     </div>
 </div>
-
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor%}
 {% endblock %}

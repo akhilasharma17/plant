@@ -3,20 +3,20 @@
 <div class="home-page">
     {% if username %}
         <h1>Welcome, {{ username }}!</h1>
-        <a href="/logout">Logout</a>
+        <a href="/logout" class="homepage-button">Logout</a>
         <h2>Your Watchlist:</h2>
         <div class="card-container">
             {% if plant %}
                 {% for watched in plant %}
-                <div class="card">
-                    <a href="/plant/{{ watched[0]}}">
-                    <h3>{{ watched[1] }}</h3>
-                    <p>{{ watched[2] }}</p>
+                    <a href="/plant/{{ watched[0]}}" class="watchlist-link">
+                        <div class="card">
+                        <h3>{{ watched[1] }}</h3>
+                        <p>{{ watched[2] }}</p>
+                        <form action="/remove_watchlist/{{ watched[0] }}" method="POST">
+                            <button type="submit" class="watchlist-button">Remove from Watchlist</button>
+                        </form>
+                        </div>
                     </a>
-                    <form action="/remove_watchlist/{{ watched[0] }}" method="POST">
-                        <button type="submit">Remove from Watchlist</button>
-                    </form>
-                </div>
                 {% endfor %}
             {% else %}
                 <p>Your watchlist is empty.</p>
@@ -27,8 +27,11 @@
     <p>Explore a wide variety of plants native to New Zealand. 
         Learn about their status, habitat, and how to grow them. 
         Let's make the world greener together!</p>
-        <p><a href="/all_plant">Click here to see All Plants</a>
-            <a href="/login">Login to view your Watchlist</a></p>
+        <p><a href="/all_plant" class="homepage-button">Click here to see All Plants</a>
+            <a href="/login" class="homepage-button">Login to view your Watchlist</a></p>
     {% endif %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor%}
 </div>
 {% endblock %}

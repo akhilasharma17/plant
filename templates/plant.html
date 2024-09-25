@@ -28,10 +28,13 @@
         </div>
         {% if username %}
             <form action="/add_to_watchlist/{{ plant[0] }}" method="POST">
-                <button type="submit">Add to Watchlist</button>
+                <button type="submit" class="grid-item1">Add to Watchlist</button>
             </form>
         {% else %}
-            <p class="grid-item3"><a href="/login">Log in</a> to add this plant to your watchlist.</p>
+            <p class="grid-item1"><a href="/login">Log in</a> to add this plant to your watchlist.</p>
         {% endif %}
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor%}
     </div>
 {%endblock%}

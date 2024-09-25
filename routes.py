@@ -32,6 +32,7 @@ def homepage():
 @app.route('/add_to_watchlist/<int:plant_id>', methods=['POST'])
 def add_to_watchlist(plant_id):
     username = session.get('username')
+    # session['_flashes'] = []
     if not username:
         flash("You need to log in to add plants to your watchlist")
         return redirect('/login')
@@ -50,7 +51,7 @@ def add_to_watchlist(plant_id):
                             INSERT INTO Watchlist(user_id, plant_id)
                             VALUES (?, ?);"""
             db_insert(insert_query, params=(user_id, plant_id))
-        flash("Plant added to your watchlist.", "success")
+            flash("Plant added to your watchlist.", "success")
     else:
         flash("User not found.", "error")
     return redirect(f'/plant/{plant_id}')

@@ -84,7 +84,7 @@ h1, h2 {
 }
 
 .search {
-	margin-top: 13px 10px 0px;
+	margin-top: 13px 10px;
 	padding: 5px;
 	align-self: center;
 }
@@ -94,10 +94,10 @@ h1, h2 {
 	justify-content: center;
 }
 
-.nav input{
+.nav input[type="text"] {
 	padding: 5px 10px;
-    border: 1px solid rgb(61, 212, 56);
-    background-color: rgb(104, 170, 91);
+    border: 1px solid rgb(51, 104, 27);
+    background-color: rgb(255, 255, 255);
     color: rgb(83, 24, 24);
     font-weight: bold;
     cursor: pointer;
@@ -135,7 +135,7 @@ h1, h2 {
     line-height: 1.6;
 }
 
-.home-page a {
+.homepage-button {
     display: inline-block;
     padding: 15px 30px;
     background-color: rgb(104, 170, 91);
@@ -177,6 +177,7 @@ h1, h2 {
 .gallery-item:hover {
 	border: 1px solid rgb(20, 150, 30);
 	background-color: rgb(196, 184, 127);
+	transform: translateY(-5px);
 }
 
 .gallery-container img {
@@ -266,6 +267,17 @@ h1, h2 {
     font-weight: bold;
     color: brown;
     font-size: 1.4em;
+}
+
+.add-to-watchlist-button {
+	background-color: rgb(231, 225, 195);
+    color: rgb(83, 24, 24);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+	float: right;
 }
 
 
@@ -363,14 +375,32 @@ h1, h2 {
 .card-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
 }
 
 .card {
-    border: 5px solid rgb(104, 170, 91);
+    border: 5px solid rgb(67, 122, 55);
 	border-radius: 4px;
     padding: 16px;
     margin: 8px;
     width: 200px;
+	background-color: rgb(127, 192, 113) ;
+	box-shadow: 0 4px 8px;
+}
+
+.watchlist-link {
+	text-decoration: none;
+}
+
+.watchlist-button {
+	background-color: rgb(231, 225, 195);
+    color: rgb(83, 24, 24);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 /*style for footer*/

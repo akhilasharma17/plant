@@ -11,4 +11,7 @@
     {% else %}
         <p>No plants found matching your search.</p>
     {% endif %}
+    {% for message in get_flashed_messages() %}
+     <div class="alert">{{ message }}</div>
+    {% endfor%}
 {% endblock %}

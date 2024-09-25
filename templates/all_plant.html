@@ -31,5 +31,8 @@
       <p>No plants found with the selected filter</p>
     {% endif %}
   </div>
+  {% for message in get_flashed_messages() %}
+    <div class="alert">{{ message }}</div>
+  {% endfor%}
 {% endblock %}
 
