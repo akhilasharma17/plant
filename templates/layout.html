@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <!---link to stylesheet-->
         <link rel="stylesheet" href="/static/style.css">
-        <!-- favicon -->
+        <!--favicon-->
         <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 
     </head>
@@ -17,8 +17,8 @@
         <!--navigation bar-->
         <div class="nav">
             <ul>
-                <!--favicon in navigation bar(on Home button)-->
                 <li><a href="http://127.0.0.1:5000/">
+                    <!--favicon in navigation bar(on Home button)-->
                     <img src="/static/favicon.svg" type="image/svg+xml" style="width: 16px; height: 16px;">
                     Plant Preservation
                     </a>
@@ -31,9 +31,12 @@
                         <input type="submit" value="Search">
                     </form>
                 </li>
+                <!--check if someone is logged in-->
                 {% if session['username'] %}
+                    <!--if someone is logged in, show their username and a logout button on the nav bar-->
                     <li class="nav-username">{{ session['username'] }}</li>
                     <li class="logout"><a href="/logout">Logout</a></li>
+                <!--is no one is logged in, show the login and signup buttons on nav bar-->
                 {% else %}
                     <li><a href="http://127.0.0.1:5000/login">Login here</a></li>
                     <li><a href="http://127.0.0.1:5000/signup">Sign Up here</a></li>
@@ -51,5 +54,4 @@
                 </div>
         </footer>
     </body>
-    </html>
-
+</html>

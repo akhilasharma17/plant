@@ -8,6 +8,7 @@ body {
 	height: 100%;
 }
 
+/*style for headings*/
 h1, h2 {
 	font-family: "Comfortaa", monospace;
 	text-align: center;
@@ -17,6 +18,7 @@ h1, h2 {
 	padding: 30px;
 }
 
+/*style for buttons*/
 .button {
     background-color: rgb(104, 170, 91); 
     color: rgb(83, 24, 24); 
@@ -42,15 +44,18 @@ h1, h2 {
 	padding: 0;
 	outline: none;
 	background-color: rgb(104, 170, 91);
-	border-bottom: 1px solid rgb(81, 105, 76); 
+	border-bottom: 1px solid rgb(81, 105, 76);
+	/*make sure the navigation bar stays at the top*/
 	position: fixed;
 	top: 0;
+	/*ensure that it covers the full width of the page*/
 	width: 100%;
 	box-shadow: 0 2px 4px;
 	font-family: 'Comfortaa', sans-serif;
 }
 
 .nav ul {
+	/*remove the bullet points*/
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -75,11 +80,14 @@ h1, h2 {
 	color: rgb(83, 24, 24);
 	text-align: center;
 	padding: 15px 18px;
+	/*remove the underline from the link*/
 	text-decoration: none;
 	font-weight: bold;
 }
 
 .nav li a:hover {
+	/*change the background color when the cursor
+	hovers over to follow design conventions*/
 	background-color: rgb(51, 153, 31);
 }
 
@@ -107,9 +115,14 @@ h1, h2 {
     background-color: rgb(51, 153, 31);
 }
 
+/*style for search results page*/
+.search-container {
+	height: 100vh;
+}
 
 /*style for home page*/
 .home-page {
+	/*use flex to create modern style*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,6 +149,7 @@ h1, h2 {
 }
 
 .homepage-button {
+	/*make larger buttons on home page for aesthetic appeal*/
     display: inline-block;
     padding: 15px 30px;
     background-color: rgb(104, 170, 91);
@@ -175,12 +189,13 @@ h1, h2 {
 }
 
 .gallery-item:hover {
-	border: 1px solid rgb(20, 150, 30);
+	outline: 1px solid rgb(20, 150, 30);
 	background-color: rgb(196, 184, 127);
 	transform: translateY(-5px);
 }
 
 .gallery-container img {
+	/*try maintain the aspect ratio the images*/
 	width: 100%;
 	height: 220px;
 	object-fit: cover;
@@ -194,16 +209,23 @@ h1, h2 {
 
 .result-link {
 	padding: 40px;
+	/*remove the underline from the link*/
 	text-decoration: none;
+}
+
+.no-filter-result {
+	height: 50vh;
 }
 
 /*style for the status filter form*/
 .filter {
+	/*use flex to create a modern design*/
     display: flex;
     flex-direction: column;
     width: 300px;
     margin: 20px auto;
     padding: 20px;
+	/*round the borders so they look smoother*/
     border-radius: 8px;
     box-shadow: 0 2px 5px;
 }
@@ -212,16 +234,16 @@ h1, h2 {
     margin-bottom: 8px;
 }
 
-/*style for the dropdown*/
+/*style for the filter dropdown*/
 .filter-options {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 12px;
 }
 
-
 /*style for individual plant pages*/
 .grid-container {
+	/*use a grid layout to make a modern design*/
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto auto auto;
@@ -253,6 +275,7 @@ h1, h2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/*make sure images don't go over the edge of the background*/
 	height: 300px;
 }
 
@@ -264,6 +287,7 @@ h1, h2 {
 }
 
 .grid-item3 p:first-child {
+	/*make the status a different style so that it stands out*/
     font-weight: bold;
     color: brown;
     font-size: 1.4em;
@@ -282,7 +306,9 @@ h1, h2 {
 
 
 /*style for custom 404 page*/
+/*leave lots of white space for simplicity*/
 .error-page {
+	/*use flex to help make minimalistic design*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -319,24 +345,20 @@ h1, h2 {
 }
 
 /*style for flash messages*/
-.success {
-	color: green;
-	padding: 10px;
+.alert {
+	/*brighter blue color so that messages stand out against plant theme,
+	making them more visible to users*/
+	color: blue;
+	font-weight: bold;
 }
-
-.error {
-	color: red;
-	padding: 10px;
-}
-
 
 /*style for login and signup pages*/
 .form-container {
 	display: flex;
 	justify-content: center;
-	background-color:aliceblue;
-	height: 100vh;
-	padding-bottom: 40px;
+	/*light cream background color to fit plant theme*/
+	background-color:rgb(231, 225, 195);
+	height: 90vh;
 }
 
 .form-box {
@@ -405,12 +427,13 @@ h1, h2 {
 
 /*style for footer*/
 .footer {
-	position: fixed;
+	/*ensure that footer stays at bottom of pages*/
 	bottom: 0;
 	left: 0;
 	background-color: rgb(93, 153, 81);
 	width: 100%;
-	padding: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
 }
 
 .footer-content {

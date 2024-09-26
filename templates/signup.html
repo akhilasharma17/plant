@@ -1,25 +1,31 @@
+<!--signup with jinja-->
 {% extends "layout.html" %}
 {% block content %}
     <div class="form-container">
         <div class="form-box">
             <h2>Sign Up</h2>
+            <!--signup form-->
             <form method="POST" action="/signup">
                 <div class="signup-form">
                     <label for="username">Username:</label>
+                    <!--maximum and minimum character boundaries(maxlength and minlength)
+                        to avoid lots of text being pasted in-->
                     <input type="text" name="username" maxlength="15" minlength="6" required>
                 </div>
                 <div class="signup-form">
                     <label for="password">Password:</label>
+                    <!--maximum and minimum character boundaries(maxlength and minlength)
+                        to avoid lots of text being pasted in-->
                     <input type="password" name="password" maxlength=15 minlength="6" required>
                 </div>
                 <button type="submit" class="button">Sign Up</button>
             </form>
+            <!--if the username already exists, display
+                the message from the signup route-->
             {% for message in get_flashed_messages() %}
                 <div class="alert">{{ message }}</div>
             {% endfor%}
             <p>Already have an account?<a href="/login">Login here</a></p>
         </div>
     </div>
-
-
 {% endblock %}

@@ -1,9 +1,22 @@
+<!--home page with jinja-->
 {% extends "layout.html" %}
 {% block content %}
 <div class="home-page">
+    <!--get any messages from pages we have been redirected from and display them-->
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor%}
+    {% if message %}
+        <p class="alert">{{ message }}</p>
+    {% endif %}
+    <!--if a user is logged in, welcome them-->
     {% if username %}
         <h1>Welcome, {{ username }}!</h1>
-        <a href="/logout" class="homepage-button">Logout</a>
+        <p><a href="/all_plant" class="homepage-button">View All plants</a>
+            <a href="/logout" class="homepage-button">Logout</a>
+        </p>
+        <!--display the users watchlist on the home page so that they do not 
+            have to waste time going to another page-->
         <h2>Your Watchlist:</h2>
         <div class="card-container">
             {% if plant %}
@@ -12,16 +25,19 @@
                         <div class="card">
                         <h3>{{ watched[1] }}</h3>
                         <p>{{ watched[2] }}</p>
+                        <!--provide an option to remove plants from the watchlist-->
                         <form action="/remove_watchlist/{{ watched[0] }}" method="POST">
                             <button type="submit" class="watchlist-button">Remove from Watchlist</button>
                         </form>
                         </div>
+                    <!--end link here so that whole card is clickable-->
                     </a>
                 {% endfor %}
             {% else %}
                 <p>Your watchlist is empty.</p>
             {% endif %}
         </div>
+    <!--if a user is not logged in, display default home page-->
     {% else %}
     <h1>Welcome to Plant Preservation!</h1>
     <p>Explore a wide variety of plants native to New Zealand. 
@@ -30,8 +46,5 @@
         <p><a href="/all_plant" class="homepage-button">Click here to see All Plants</a>
             <a href="/login" class="homepage-button">Login to view your Watchlist</a></p>
     {% endif %}
-    {% for message in get_flashed_messages() %}
-        <div class="alert">{{ message }}</div>
-    {% endfor%}
 </div>
 {% endblock %}

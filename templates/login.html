@@ -1,26 +1,36 @@
+<!--login with jinja-->
 {%extends "layout.html"%}
 {%block content%}
 <div class="form-container">
     <div class="form-box">
         <h2>Login</h2>
-        {% if message %}
-            <p class="error">{{ message }}</p>
-        {% endif %}
         <form action="{{ ('login') }}" method="POST">
+            <!--input for username-->
             <div class="input-group">
                 <label for="username">Username:</label>
+                <!--maximum and minimum character boundaries(maxlength and minlength)
+                    to avoid lots of text being pasted in-->
                 <input type="text" id="username" name="username" maxlength="15" minlength="6" required>
             </div>
+            <!--input for password-->
             <div class="input-group">
                 <label for="password">Password:</label>
+                <!--maximum and minimum character boundaries(maxlength and minlength)
+                    to avoid lots of text being pasted in-->
                 <input type="password" id="password" name="password" maxlength="15" minlength="6" required>
             </div>
             <button type="submit" class="button">Login</button>
         </form>
+        <!--if the username or password is wrong, display
+            the message from the login route-->
+        {% if message %}
+            <p class="alert">{{ message }}</p>
+        {% endif %}
+        <!--get any messages from pages we have been redirected from and display them-->
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor%}
         <p>Don't have an account? <a href="/signup">Sign up</a></p>
     </div>
 </div>
-    {% for message in get_flashed_messages() %}
-        <div class="alert">{{ message }}</div>
-    {% endfor%}
 {% endblock %}

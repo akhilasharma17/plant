@@ -1,17 +1,20 @@
+<!--search result page with jinja-->
 {% extends "layout.html" %}
-
 {% block content %}
-    <h1>Search Results for "{{ search_term }}"</h1>
-    {% if result %}
-        <ul class="gallery-container">
-            {% for plant in result %}
-                <li class="gallery-item"><a href='plant/{{plant[0]}}' class="result-link">{{ plant[1] }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No plants found matching your search.</p>
-    {% endif %}
-    {% for message in get_flashed_messages() %}
-     <div class="alert">{{ message }}</div>
-    {% endfor%}
+    <div class="search-container">
+        <!--display the term the user searched for so that they know
+            what they searched in case they incorrectly searched something-->
+        <h1>Search Results for "{{ search_term }}"</h1>
+        {% if result %}
+            <ul class="gallery-container">
+                <!--if there is a result/are results display them as links to their pages
+                    so that the user can easily access the pages-->
+                {% for plant in result %}
+                    <li class="gallery-item"><a href='plant/{{plant[0]}}' class="result-link">{{ plant[1] }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No plants found matching your search.</p>
+        {% endif %}
+    </div>
 {% endblock %}
